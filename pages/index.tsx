@@ -1,12 +1,7 @@
-import { Button } from "../components";
+import type { NextPage } from "next";
 
-export default function Home() {
-  return (
-    <div style={{ display: "flex", justifyContent: "center" }}>
-      <h1>
-        <p className="font-extrabold">Next React App</p>
-      </h1>
-      <Button>Hi</Button>
-    </div>
-  );
-}
+const Home: NextPage = () => {
+  return null;
+};
+
+export default Home;
