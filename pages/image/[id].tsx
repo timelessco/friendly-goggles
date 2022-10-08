@@ -1,6 +1,12 @@
 import { PropsWithChildren } from "react";
 import * as Dialog from "@radix-ui/react-dialog";
-import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
+import {
+  AnimatePresence,
+  motion,
+  useMotionValue,
+  useSpring,
+  useTransform,
+} from "framer-motion";
 import { GetStaticProps } from "next";
 
 import { AspectBlurImage } from "../../components/AspectBlurImage";
@@ -20,27 +26,29 @@ const ImageIndex: React.FC<ImageIndexProps> = ({ image, children }) => {
   });
   const opacity = useTransform(translateY, [0, 45], [1, 0.95]);
   return (
-    <Dialog.Overlay asChild key={`overlay-${id}`}>
-      <motion.div
-        className="z-10 fixed inset-0 bg-black/95 overflow-y-auto"
-        style={{ opacity }}
-      >
-        <Dialog.Content forceMount asChild key={`content-${id}`}>
-          <motion.div className="flex flex-col h-screen justify-center items-center">
-            <motion.div
-              layoutId={`image-${id}`}
-              className="relative w-full sm:w-[480px]"
-            >
-              <AspectBlurImage
-                alt="Unsplash Image"
-                priority
-                {...rest}
-              ></AspectBlurImage>
+    <AnimatePresence>
+      <Dialog.Overlay asChild key={`overlay-${id}`}>
+        <motion.div
+          className="z-10 fixed inset-0 bg-black/95 overflow-y-auto"
+          style={{ opacity }}
+        >
+          <Dialog.Content forceMount asChild key={`content-${id}`}>
+            <motion.div className="flex flex-col h-screen justify-center items-center">
+              <motion.div
+                layoutId={`image-${id}`}
+                className="relative w-full sm:w-[480px]"
+              >
+                <AspectBlurImage
+                  alt="Unsplash Image"
+                  priority
+                  {...rest}
+                ></AspectBlurImage>
+              </motion.div>
             </motion.div>
-          </motion.div>
-        </Dialog.Content>
-      </motion.div>
-    </Dialog.Overlay>
+          </Dialog.Content>
+        </motion.div>
+      </Dialog.Overlay>
+    </AnimatePresence>
   );
 };
 
