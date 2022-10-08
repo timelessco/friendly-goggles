@@ -13,26 +13,24 @@ interface ImageIndexProps extends PropsWithChildren {
 const ImageIndex: React.FC<ImageIndexProps> = ({ image }) => {
   const { id, ...rest } = image;
   return (
-    <AnimatePresence>
-      <Dialog.Overlay asChild key={`overlay-${id}`}>
-        <motion.div className="z-10 fixed inset-0 bg-black/95 overflow-y-auto">
-          <Dialog.Content forceMount asChild key={`content-${id}`}>
-            <motion.div className="flex flex-col h-screen justify-center items-center">
-              <motion.div
-                layoutId={`image-${id}`}
-                className="relative w-full sm:w-[480px]"
-              >
-                <AspectBlurImage
-                  alt="Unsplash Image"
-                  priority
-                  {...rest}
-                ></AspectBlurImage>
-              </motion.div>
+    <Dialog.Overlay asChild key={`overlay-${id}`}>
+      <motion.div className="z-10 fixed inset-0 bg-black/95 overflow-y-auto">
+        <Dialog.Content forceMount asChild key={`content-${id}`}>
+          <motion.div className="flex flex-col h-screen justify-center items-center">
+            <motion.div
+              layoutId={`image-${id}`}
+              className="relative w-full sm:w-[480px]"
+            >
+              <AspectBlurImage
+                alt="Unsplash Image"
+                priority
+                {...rest}
+              ></AspectBlurImage>
             </motion.div>
-          </Dialog.Content>
-        </motion.div>
-      </Dialog.Overlay>
-    </AnimatePresence>
+          </motion.div>
+        </Dialog.Content>
+      </motion.div>
+    </Dialog.Overlay>
   );
 };
 
