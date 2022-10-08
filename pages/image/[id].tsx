@@ -3,7 +3,6 @@ import * as Dialog from "@radix-ui/react-dialog";
 import { motion } from "framer-motion";
 import { GetStaticProps } from "next";
 
-import { AspectBlurImage } from "../../components/AspectBlurImage";
 import { ImageType, localImages } from "../../data";
 
 interface ImageIndexProps extends PropsWithChildren {
@@ -18,14 +17,14 @@ const ImageIndex: React.FC<ImageIndexProps> = ({ image }) => {
         <Dialog.Content forceMount asChild key={`content-${id}`}>
           <motion.div className="flex flex-col h-screen justify-center items-center">
             <motion.div
-              layoutId={`image-${id}`}
+              layoutId={`image-container-${id}`}
               className="relative w-full sm:w-[480px]"
             >
-              <AspectBlurImage
-                alt="Unsplash Image"
-                priority
+              <motion.img
+                layout
+                layoutId={`image-${id}`}
                 {...rest}
-              ></AspectBlurImage>
+              ></motion.img>
             </motion.div>
           </motion.div>
         </Dialog.Content>

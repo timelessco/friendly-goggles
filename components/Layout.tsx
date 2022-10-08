@@ -5,8 +5,6 @@ import { useRouter } from "next/router";
 
 import { localImages } from "../data";
 
-import { AspectBlurImage } from "./AspectBlurImage";
-
 export const Layout: React.FC<PropsWithChildren> = ({ children }) => {
   const router = useRouter();
   const isOpen = router.asPath !== "/";
@@ -25,25 +23,24 @@ export const Layout: React.FC<PropsWithChildren> = ({ children }) => {
           {children}
           {localImages.map(({ id, ...rest }) => {
             const handleClick = () => {
-              setCurrentMovieId(id);
               router.push(`image/${id}`, undefined, { scroll: false });
+              setCurrentMovieId(id);
             };
             return (
               <motion.div
                 key={id}
-                whileTap={{ scale: 0.98 }}
+                whileTap={{ scale: 0.95 }}
                 onClick={handleClick}
-                layoutId={`image-${id}`}
+                layoutId={`image-container-${id}`}
                 className={`relative flex mb-8 cursor-pointer ${
                   currentMovieId === id ? "relative z-[1]" : ""
                 }`}
               >
-                <AspectBlurImage
-                  alt="Unsplash Image"
-                  sizes="20vw"
-                  priority
+                <motion.img
+                  layout
+                  layoutId={`image-${id}`}
                   {...rest}
-                ></AspectBlurImage>
+                ></motion.img>
               </motion.div>
             );
           })}
