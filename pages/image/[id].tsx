@@ -10,7 +10,7 @@ interface ImageIndexProps extends PropsWithChildren {
   image: ImageType;
 }
 
-const ImageIndex: React.FC<ImageIndexProps> = ({ image, children }) => {
+const ImageIndex: React.FC<ImageIndexProps> = ({ image }) => {
   const { id, ...rest } = image;
   return (
     <AnimatePresence>
