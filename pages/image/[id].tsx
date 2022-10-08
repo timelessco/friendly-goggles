@@ -1,6 +1,6 @@
 import { PropsWithChildren } from "react";
 import * as Dialog from "@radix-ui/react-dialog";
-import { AnimatePresence, motion } from "framer-motion";
+import { motion } from "framer-motion";
 import { GetStaticProps } from "next";
 
 import { AspectBlurImage } from "../../components/AspectBlurImage";
