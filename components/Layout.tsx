@@ -10,14 +10,14 @@ import { AspectBlurImage } from "./AspectBlurImage";
 export const Layout: React.FC<PropsWithChildren> = ({ children }) => {
   const router = useRouter();
   const isOpen = router.asPath !== "/";
-  const [currentMovieId, setCurrentMovieId] = useState<number>(
-    isOpen ? (router.query.id as unknown as number) : 1,
-  );
   const handleOpenChange = (state: boolean) => {
     if (!state) {
       router.push("/", undefined, { scroll: false });
     }
   };
+  const [currentMovieId, setCurrentMovieId] = useState<number>(
+    isOpen ? (router.query.id as unknown as number) : 1,
+  );
   return (
     <Dialog.Root open={isOpen} onOpenChange={handleOpenChange}>
       <div className="flex flex-1 xl:max-w-[1280px] z-[1] mx-auto px-4 sm:px-6 lg:px-8">

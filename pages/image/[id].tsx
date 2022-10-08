@@ -1,12 +1,6 @@
 import { PropsWithChildren } from "react";
 import * as Dialog from "@radix-ui/react-dialog";
-import {
-  AnimatePresence,
-  motion,
-  useMotionValue,
-  useSpring,
-  useTransform,
-} from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import { GetStaticProps } from "next";
 
 import { AspectBlurImage } from "../../components/AspectBlurImage";
@@ -18,20 +12,10 @@ interface ImageIndexProps extends PropsWithChildren {
 
 const ImageIndex: React.FC<ImageIndexProps> = ({ image, children }) => {
   const { id, ...rest } = image;
-  const y = useMotionValue(0);
-  const translateY = useSpring(y, {
-    damping: 35,
-    stiffness: 300,
-    mass: 1,
-  });
-  const opacity = useTransform(translateY, [0, 45], [1, 0.95]);
   return (
     <AnimatePresence>
       <Dialog.Overlay asChild key={`overlay-${id}`}>
-        <motion.div
-          className="z-10 fixed inset-0 bg-black/95 overflow-y-auto"
-          style={{ opacity }}
-        >
+        <motion.div className="z-10 fixed inset-0 bg-black/95 overflow-y-auto">
           <Dialog.Content forceMount asChild key={`content-${id}`}>
             <motion.div className="flex flex-col h-screen justify-center items-center">
               <motion.div
