@@ -1,6 +1,7 @@
 import { PropsWithChildren, useState } from "react";
 import * as Dialog from "@radix-ui/react-dialog";
 import { motion } from "framer-motion";
+import Image from "next/future/image";
 import { useRouter } from "next/router";
 
 import { localImages } from "../data";
@@ -18,8 +19,8 @@ export const Layout: React.FC<PropsWithChildren> = ({ children }) => {
   );
   return (
     <Dialog.Root open={isOpen} onOpenChange={handleOpenChange}>
-      <div className="flex flex-1 xl:max-w-[1280px] z-[1] mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="columns-1 sm:columns-2 md:columns-3 lg:columns-4 w-full gap-8">
+      <motion.div className="flex flex-1 xl:max-w-[1280px] z-[1] mx-auto px-4 sm:px-6 lg:px-8">
+        <motion.div className="columns-1 sm:columns-2 md:columns-3 lg:columns-4 w-full gap-8">
           {children}
           {localImages.map(({ id, ...rest }) => {
             const handleClick = () => {
@@ -36,16 +37,14 @@ export const Layout: React.FC<PropsWithChildren> = ({ children }) => {
                   currentMovieId === id ? "relative z-[1]" : ""
                 }`}
               >
-                <motion.img
-                  layout
-                  layoutId={`image-${id}`}
-                  {...rest}
-                ></motion.img>
+                <motion.div layout layoutId={`image-${id}`}>
+                  <Image alt={"images from unsplash"} {...rest} />
+                </motion.div>
               </motion.div>
             );
           })}
-        </div>
-      </div>
+        </motion.div>
+      </motion.div>
     </Dialog.Root>
   );
 };

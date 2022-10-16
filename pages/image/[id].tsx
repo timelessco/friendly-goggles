@@ -2,6 +2,7 @@ import { PropsWithChildren } from "react";
 import * as Dialog from "@radix-ui/react-dialog";
 import { motion } from "framer-motion";
 import { GetStaticProps } from "next";
+import Image from "next/future/image";
 
 import { ImageType, localImages } from "../../data";
 
@@ -20,11 +21,9 @@ const ImageIndex: React.FC<ImageIndexProps> = ({ image }) => {
               layoutId={`image-container-${id}`}
               className="relative w-full sm:w-[480px]"
             >
-              <motion.img
-                layout
-                layoutId={`image-${id}`}
-                {...rest}
-              ></motion.img>
+              <motion.div layout layoutId={`image-${id}`}>
+                <Image alt={"images from unsplash"} {...rest} />
+              </motion.div>
             </motion.div>
           </motion.div>
         </Dialog.Content>
