@@ -49,3 +49,6 @@ jspm_packages
 
 ## library folder
 build
+/dist/
+.vinext/
+.cloudflare/

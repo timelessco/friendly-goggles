@@ -1,4 +1,5 @@
 # pnpm project settings. pnpm 11+ reads settings from this file, not from .npmrc.
 
 allowBuilds:
+  workerd: true
   core-js-pure: true
