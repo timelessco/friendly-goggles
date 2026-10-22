@@ -2,7 +2,7 @@ import { bindings, defineConfig, defineWorker } from "cf/config";
 
 export default defineConfig({
   worker: defineWorker({
-    name: "next-react-app",
+    name: "friendly-goggles",
     entrypoint: "vinext/server/fetch-handler",
     compatibilityDate: "2026-10-20",
     compatibilityFlags: ["nodejs_compat"],
