@@ -54,3 +54,5 @@ yarn.lock
 ## library folder
 dist
 CHANGELOG.md
+.vinext
+.cloudflare
