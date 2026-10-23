@@ -31,7 +31,7 @@
     "start": "next start",
     "release": "release-it",
     "postpublish": "pinst --enable",
-    "size": "yarn build && size-limit",
+    "size": "pnpm build && size-limit",
     "commit": "gacp",
     "contributors:add": "all-contributors add",
     "contributors:generate": "all-contributors generate",
@@ -47,10 +47,10 @@
   },
   "lint-staged": {
     "**/*.{js,jsx,tx,tsx}": [
-      "yarn lint:fix"
+      "pnpm lint:fix"
     ],
     "**/*.{html,css,js,jsx,ts,tsx,md,json}": [
-      "yarn format:fix"
+      "pnpm format:fix"
     ]
   },
   "browserslist": {
