@@ -7,7 +7,6 @@ export default defineConfig({
   plugins: [
     vinext({
       cache: { cdn: staticAssetsAdapter() },
-      prerender: { routes: "*" },
     }),
     cloudflare(),
   ],
