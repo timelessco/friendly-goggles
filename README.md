@@ -1,5 +1,11 @@
 # Next.js + Tailwind + TypeScript + Jest
 
+## Live deployment
+
+[Open on Cloudflare Workers](https://friendly-goggles.timeless.workers.dev)
+
+Cloudflare Workers is the deployment target for this repository.
+
 This includes Next.js' built-in support for Tailwind CSS, Jest and TypeScript.
 
 ## Getting Started
@@ -9,7 +15,7 @@ First, run the development server:
 ```bash
 npm run dev
 # or
-yarn dev
+pnpm dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the
